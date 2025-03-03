@@ -30,8 +30,9 @@ public class P04_PUT_ResponseInformationAssert {
   */
 
         @Test
-        public void test() {
-            // 1-Endpoint Hazırlanır(PUT - Request Body hazırlanır)
+        public void put01() {
+            // 1-Endpoint Hazırlanır(PUT - Request Body hazırlanır) //PUT bir update işlemidir
+
             String url = "https://jsonplaceholder.typicode.com/posts/70";
 
             JSONObject reqBody = new JSONObject();
@@ -44,9 +45,10 @@ public class P04_PUT_ResponseInformationAssert {
 
             //3-Response kayıt edilir
             Response response = given().contentType(ContentType.JSON).when().body(reqBody.toString()).put(url);
-            // url ye belirtilen sekilde bir body gönderildigi zaman
-            // contentType' ı Jason olan cevabı response' ye ata ve kaydet
+            // NOT : Eger sorgumuzda bir requesy body gonderiyorsak gonderdigimiz datanin formatini
+            // belirtmek zorundayiz. Bunu da hemen given() methodundan sonra pre-condition olarak belirtebiliriz.
 
+            // 4 - Assertion
             response.then().assertThat().statusCode(200)
                     .contentType("application/json; charset=utf-8")
                     .statusLine("HTTP/1.1 200 OK")

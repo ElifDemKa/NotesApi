@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 
 
-public class P01_Get_apiTest {
+public class P01_Get_ApiSorgulama {
 
     /*
     https://restful-booker.herokuapp.com/booking/10 url’ine
@@ -19,7 +19,8 @@ public class P01_Get_apiTest {
      */
 
     /*
-   Tüm API sorguları 4 aşamada yapılır
+            *****Tüm API sorguları 4 aşamada yapılır*****
+
        1-EndPonit hazırlanır(url ve varsa(PUT-POST-PATCH) request Body hazırlanır)
        2-Soruda verilmiş ise Expected Data hazırlanır. Verilmemişse hazırlanmaz
        3-Dönen cevap kaydedilir
@@ -35,7 +36,10 @@ public class P01_Get_apiTest {
     //2-Soruda verilmiş ise Expected Data hazırlanır. Verilmemişse hazırlanmaz
 
     //3-Dönen cevap kaydedilir (obje olusturulur)
-    Response response=given().when().get(url); // RestAssured.get(url); // yani buradaki url'ye bir sorgu gönderdiğim zaman donen cevabı responseye ata
+    Response response=given().when().get(url);
+    //not: given when get  biz classı run ettiğimizde bir sonuc dondurduğu kısım Response olarak da kaydederiz
+
+    // RestAssured.get(url); // yani buradaki url'ye bir sorgu gönderdiğim zaman donen cevabı responseye ata
 
     // response.prettyPrint(); //bilgilerini gösterir ama sistemi yorar
     // response.prettyPeek();  // tüm bilgilerini getirir

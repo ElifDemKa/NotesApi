@@ -22,7 +22,7 @@ public class P05_GET_ResponseBodyTest {
   */
 
     @Test
-    public void test(){
+    public void get01(){
 
         // 1-EndPoint Hazırlama
         String url="https://jsonplaceholder.typicode.com/posts/44";

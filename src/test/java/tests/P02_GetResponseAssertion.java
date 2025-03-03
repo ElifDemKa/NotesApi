@@ -4,6 +4,8 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
+import static io.restassured.RestAssured.given;
+
 public class P02_GetResponseAssertion {
 
     /*
@@ -27,15 +29,21 @@ public class P02_GetResponseAssertion {
     //2-Soruda verilmiş ise Expected Data hazırlanır. Verilmemişse hazırlanmaz (verilmemis)
 
     //3-Dönen cevap kaydedilir (obje olusturulur)
-    Response response= RestAssured.get(url);
+
+    // Response response= given().when().get(url);  İki sekilde de dönen sonuc kaydedilebilir bu 1.si
+    Response response= RestAssured.get(url); //bu 2.si
 
     //4-Assertion işlemleri yapılır (karsılastırma)
+
     // eger burada expected ve actual data karsılastırılmıyorsa ;
 
     response.then().assertThat().statusCode(200)
                                 .contentType("application/json; charset=utf-8")
                                 .header("Server", "Cowboy")
                                 .statusLine("HTTP/1.1 200 OK");
+
+
+
       //NOT: Bize burada sonuc donmeyebilir fakat testim hata vermezse sonuc passed'dir
 
 
