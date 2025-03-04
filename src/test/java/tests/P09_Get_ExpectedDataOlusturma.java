@@ -31,11 +31,11 @@ public class P09_Get_ExpectedDataOlusturma {
        String url="https://jsonplaceholder.typicode.com/posts/22";
 
        // 2. Expected data olusturma
-       JSONObject expBody=new JSONObject();
-       expBody.put("userId",3);
-       expBody.put("id",22);
-       expBody.put("title","dolor sint quo a velit explicabo quia nam");
-       expBody.put("body","eos qui et ipsum ipsam suscipit aut\nsed omnis non odio\nexpedita ear" +
+       JSONObject expData=new JSONObject();
+       expData.put("userId",3);
+       expData.put("id",22);
+       expData.put("title","dolor sint quo a velit explicabo quia nam");
+       expData.put("body","eos qui et ipsum ipsam suscipit aut\nsed omnis non odio\nexpedita ear" +
                "um mollitia molestiae aut atque rem suscipit\nnam impedit esse");
 
 
@@ -46,11 +46,12 @@ public class P09_Get_ExpectedDataOlusturma {
        //donen cevabinda JsonPath seklınde ulasılabilir olması lazım
 
        JsonPath resJP=response.jsonPath(); //Burada dönen cevap JSON Path formatında kaydedilmek için yapıldı.
+            //biz response body bilgilerini bir objeye kaydederiz ve o obje uzerinden cagırırız
 
-       assertEquals(expBody.get("userId"),resJP.get("userId"));
-       assertEquals(expBody.get("id"),resJP.get("id"));
-       assertEquals(expBody.get("title"),resJP.get("title"));
-       assertEquals(expBody.get("body"),resJP.get("body"));
+       assertEquals(expData.get("userId"),resJP.get("userId"));
+       assertEquals(expData.get("id"),resJP.get("id"));
+       assertEquals(expData.get("title"),resJP.get("title"));
+       assertEquals(expData.get("body"),resJP.get("body"));
 
 
 

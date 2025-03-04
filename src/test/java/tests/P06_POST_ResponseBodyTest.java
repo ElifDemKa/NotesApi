@@ -45,8 +45,9 @@ public class P06_POST_ResponseBodyTest {
 
         // 3-Response kaydı
         Response response=given().contentType(ContentType.JSON)
-                .when().body(reqBody.toString()).post(url);  // bu satırdaki reqBody bi obje olarak olusturuldu ve
-                                                            // obje gönderilemeyecegi için toStrıng deyip post gönderdik
+                .when().body(reqBody.toString()).post(url);
+        //*given' dan sonra bizden post istediği için content type nı yazdık artından *when yazdık
+        // bu satırdaki reqBody bi obje olarak olusturuldu ve ve bunu javanın anlayacagı dile cevirmek için toString uyguladık
 
         // 4- Assertion İşlemleri
 

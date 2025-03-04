@@ -41,19 +41,19 @@ public class P08_JsonPathileBodyTesti {
         //1-EndPoint ve reqBody hazırlama
         String url="https://restful-booker.herokuapp.com/booking";
 
-        JSONObject innerData=new JSONObject();
-        innerData.put("checkin" , "2021-06-01");
-        innerData.put("checkout" , "2021-06-10");
+        JSONObject bookingDates=new JSONObject();
+        bookingDates.put("checkin" , "2021-06-01");
+        bookingDates.put("checkout" , "2021-06-10");
 
         JSONObject reqBody=new JSONObject();
         reqBody.put("firstname","Murat");
         reqBody.put("lastname","Babayiğit");
         reqBody.put("totalprice",500);
         reqBody.put("depositpaid",true);
-        reqBody.put("bookingdates",innerData);
+        reqBody.put("bookingdates",bookingDates);
         reqBody.put("additionalneeds","wi-fi");
 
-        //2-
+        //2- Expected data hazırla (verilmemiş)
 
         //3-Response Kaydetme
         Response response=given().contentType(ContentType.JSON).when().body(reqBody.toString()).post(url);

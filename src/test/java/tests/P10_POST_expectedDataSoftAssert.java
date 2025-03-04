@@ -70,9 +70,9 @@ dolayısıyla benim 2 tane obje olusturmam gerekir
 
 
         //2-Expected Data hazırlanır
-        JSONObject expBody = new JSONObject();
-        expBody.put("bookingid",712);
-        expBody.put("booking",reqBody); // burada yukarıda olusturduğumuz request bodyleri tek tek de yazabiliriz
+        JSONObject expData = new JSONObject();
+        expData.put("bookingid",712);
+        expData.put("booking",reqBody); // burada yukarıda olusturduğumuz request bodyleri tek tek de yazabiliriz
         // ama reqbody objesini direkt alacrak da bu sekilde de yazabiliriz
 
         //3-Response kaydı yapılır
@@ -83,27 +83,39 @@ dolayısıyla benim 2 tane obje olusturmam gerekir
         //veri gönderdiğim için contenttyp ve contenttype turunu de yazarız
 
         //4-Assertion işlemi
+
         JsonPath resJP=response.jsonPath(); // response body gönderdiysel jasonpath olusturulur
         SoftAssert softAssert=new SoftAssert();
-        softAssert.assertEquals(resJP.get("booking.firstname"),expBody.getJSONObject("booking").get("firstname"));
-        softAssert.assertEquals(resJP.get("booking.lastname"),expBody.getJSONObject("booking").get("lastname"));
-        softAssert.assertEquals(resJP.get("booking.totalprice"),expBody.getJSONObject("booking").get("totalprice"));
-        softAssert.assertEquals(resJP.get("booking.depositpaid"),expBody.getJSONObject("booking").get("depositpaid"));
-        softAssert.assertEquals(resJP.get("booking.additionalneeds"),expBody.getJSONObject("booking").get("additionalneeds"));
+        softAssert.assertEquals(resJP.get("booking.firstname"),expData.getJSONObject("booking").get("firstname"));
+        softAssert.assertEquals(resJP.get("booking.lastname"),expData.getJSONObject("booking").get("lastname"));
+        softAssert.assertEquals(resJP.get("booking.totalprice"),expData.getJSONObject("booking").get("totalprice"));
+        softAssert.assertEquals(resJP.get("booking.depositpaid"),expData.getJSONObject("booking").get("depositpaid"));
+        softAssert.assertEquals(resJP.get("booking.additionalneeds"),expData.getJSONObject("booking").get("additionalneeds"));
         softAssert.assertEquals(resJP.get("booking.bookingdates.checkin"),
-                expBody.getJSONObject("booking").getJSONObject("bookingdates").get("checkin"));
+                expData.getJSONObject("booking").getJSONObject("bookingdates").get("checkin"));
         softAssert.assertEquals(resJP.get("booking.bookingdates.checkout"),
-                expBody.getJSONObject("booking").getJSONObject("bookingdates").get("checkout"));
+                expData.getJSONObject("booking").getJSONObject("bookingdates").get("checkout"));
 
         softAssert.assertAll();
 
         //HATIRLATMA:Hard assert de önce expected sonra actual yazılır
         //soft asertte ise önce actual sonra expected yazılır
+        /*
+         JsonPath respJP = response.jsonPath();
 
+        assertEquals(expData.getJSONObject("booking").get("firstname"), respJP.get("booking.firstname") );
+        assertEquals(expData.getJSONObject("booking").get("lastname"), respJP.get("booking.lastname") );
+        assertEquals(expData.getJSONObject("booking").get("totalprice"), respJP.get("booking.totalprice"));
+        assertEquals(expData.getJSONObject("booking").get("depositpaid"), respJP.get("booking.depositpaid"));
+        assertEquals(expData.getJSONObject("booking").get("additionalneeds"), respJP.get("booking.additionalneeds"));
+        assertEquals(expData.getJSONObject("booking").getJSONObject("bookingdates").get("checkin") ,
+                     respJP.get("booking.bookingdates.checkin") );
+        assertEquals(expData.getJSONObject("booking").getJSONObject("bookingdates").get("checkout") ,
+                respJP.get("booking.bookingdates.checkout") );
+         */
 
 
 
     }
-
 
 }

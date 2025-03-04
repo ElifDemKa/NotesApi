@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeTest;
 
 public class JPH_baseUrl {
     protected RequestSpecification specJPH;
-
+        //JPH JasonPlaceHolder
     @BeforeTest  // her bir testten önce calısması için beforetest
     public void setUp()
 
