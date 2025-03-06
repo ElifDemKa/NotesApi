@@ -11,7 +11,7 @@ import testDatas.JPHDatas;
 import static io.restassured.RestAssured.given;
 import static org.testng.AssertJUnit.assertEquals;
 
-public class P16_TestDataClassKullanimi extends JPH_baseUrl {
+public class P16_Get_TestDataClassKullanimi extends JPH_baseUrl {
     /*
 
      https://jsonplaceholder.typicode.com/posts/22 url’ine bir
